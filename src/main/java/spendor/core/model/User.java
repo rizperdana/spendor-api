@@ -6,8 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class User {
   @Id
-  private long id;
-  private long uuid;
+  private String id;
   private String username;
   private String fullname;
   private String email;
@@ -21,22 +20,18 @@ public class User {
 
   }
 
-  public User( String username, String fullname, String email, String phone, boolean active ) {
+  public User( String username, String fullname, String email, String password, String phone, boolean active ) {
       this.username = username;
       this.fullname = fullname;
       this.email = email;
+      this.password = password;
       this.phone = phone;
       this.active = active;
   }
 
-  public long getId() {
+  public String getId() {
     return id;
   }
-
-  public long getUuid() {
-    return uuid;
-  }
-
   public String getUsername() {
     return username;
   }
@@ -77,6 +72,6 @@ public class User {
 
   @Override
   public String toString() {
-    return "User [uuid=" + uuid + ", username=" + username + ", email=" + email  + ", active=" + active + "]"; 
+    return "User [id=" + id + ", username=" + username + ", email=" + email  + ", active=" + active + "]"; 
   }
 }
